@@ -31,8 +31,10 @@ const App = () => {
       existingItem.quantity += 1;
       if (existingItem.quantity === item.stock) saveDisabledButton(id);
     } else {
-      cartCopy.push(newItem);
-      if (item.stock === 1) saveDisabledButton(id);
+      if (cartCopy.length < 5) {
+        cartCopy.push(newItem);
+        if (item.stock === 1) saveDisabledButton(id);
+      } else alert("You have reached the maximum number of item in your cart");
     }
     setCart(cartCopy);
     const stringCart = JSON.stringify(cartCopy);

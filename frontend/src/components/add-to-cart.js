@@ -14,9 +14,7 @@ const AddToCart = ({ handleClick, robot }) => {
   };
 
   useEffect(() => {
-    if (refreshButtons) {
-      getButtonList();
-    }
+    if (refreshButtons) getButtonList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshButtons]);
 
