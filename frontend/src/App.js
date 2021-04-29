@@ -3,13 +3,16 @@ import Api from "./services/Api.js";
 import Card from "./components/card.js";
 import Cart from "./components/cart.js";
 import EmptyCart from "./components/empty-cart.js";
+import Filter from "./components/filter.js";
 import "./styles/index.css";
 import { Context } from "./context";
 
 const App = () => {
   const [robots, setRobots] = useState([]);
   const [cart, setCart] = useState([]);
+  const [materialType, setMaterialType] = useState([]);
   const [disabledButton, setDisabledButton] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const { setRefreshButtons } = useContext(Context);
 
   let cartLocal = localStorage.getItem("cart");
@@ -18,6 +21,10 @@ const App = () => {
   const getRobots = async () => {
     try {
       const robotsResponse = await Api.getRobots();
+      const unique = [
+        ...new Set(robotsResponse.data.map((item) => item.material)),
+      ];
+      setMaterialType(unique);
       setRobots(robotsResponse.data);
     } catch (error) {
       console.log(error || error.message);
@@ -86,6 +93,14 @@ const App = () => {
     setRefreshButtons(true);
   };
 
+  const handleChange = async (e) => {
+    const robotsResponse = await Api.getRobots();
+    const filteredRobots = robotsResponse.data.filter((robot) => {
+      return robot.material === e.target.value;
+    });
+    setRobots(filteredRobots);
+  };
+
   useEffect(() => {
     getRobots();
   }, []);
@@ -102,6 +117,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>Robots Market</h1>
+      <Filter materialType={materialType} handleChange={handleChange} />
       <div className="main has__cart">
         <div className="shop__items">
           {robots.map((robot) => {
