@@ -1,8 +1,13 @@
 import React from "react";
 
-const AddQuantity = ({ cartItem }) => {
+const AddQuantity = ({ cartItem, addQuantity }) => {
   return (
-    <div className="quantity__buttons">
+    <div
+      className="quantity__buttons"
+      onClick={() => {
+        addQuantity(cartItem);
+      }}
+    >
       <p className="quantity__plus">+</p>
     </div>
   );

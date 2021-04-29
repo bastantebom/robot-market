@@ -42,6 +42,27 @@ const App = () => {
     localStorage.setItem("cart", stringCart);
   };
 
+  const handleAddQuantity = (cartItem) => {
+    const cartCopy = [...cart];
+    cartItem.quantity += 1;
+    if (cartItem.quantity === cartItem.stock) saveDisabledButton(cartItem.id);
+    else {
+      setCart(cartCopy);
+      const stringCart = JSON.stringify(cartCopy);
+      localStorage.setItem("cart", stringCart);
+    }
+  };
+
+  const handleReduceQuantity = (cartItem) => {
+    const cartCopy = [...cart];
+    if (cartItem.quantity > 2) {
+      cartItem.quantity -= 1;
+      setCart(cartCopy);
+      const stringCart = JSON.stringify(cartCopy);
+      localStorage.setItem("cart", stringCart);
+    }
+  };
+
   const saveDisabledButton = (id) => {
     const buttonCopy = [...disabledButton];
     const existingItem = buttonCopy.includes(id);
@@ -80,7 +101,11 @@ const App = () => {
             );
           })}
         </div>
-        <Cart cart={cart} />
+        <Cart
+          cart={cart}
+          addQuantity={handleAddQuantity}
+          reduceQuantity={handleReduceQuantity}
+        />
       </div>
     </div>
   );
