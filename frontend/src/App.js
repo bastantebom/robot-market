@@ -12,7 +12,6 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [materialType, setMaterialType] = useState([]);
   const [disabledButton, setDisabledButton] = useState([]);
-  const [filtered, setFiltered] = useState([]);
   const { setRefreshButtons } = useContext(Context);
 
   let cartLocal = localStorage.getItem("cart");
