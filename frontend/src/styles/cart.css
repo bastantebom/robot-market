@@ -60,3 +60,33 @@
   border-color: #343a40;
   color: #fff;
 }
+
+.cart__total__amount {
+  display: flex;
+  align-items: center;
+}
+
+.total__amount__label {
+  font-size: 1.5em;
+}
+
+.total__amount__value {
+  color: #ec8f6a;
+  font-size: 1.5em;
+  text-align: right;
+  flex: 1;
+}
+
+.empty__container {
+  display: flex;
+  padding: 20px;
+  width: 380px;
+  height: 75vh;
+  border: #ec8f6a 5px solid;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty__cart__copy {
+  font-size: 1.2em;
+}

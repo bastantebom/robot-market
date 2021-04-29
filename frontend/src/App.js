@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Api from "./services/Api.js";
 import Card from "./components/card.js";
 import Cart from "./components/cart.js";
+import EmptyCart from "./components/empty-cart.js";
 import "./styles/index.css";
 import { Context } from "./context";
 
@@ -101,7 +102,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>Robots Market</h1>
-      <div className={`main ${cart.length > 0 ? "has__cart" : ""}`}>
+      <div className="main has__cart">
         <div className="shop__items">
           {robots.map((robot) => {
             return (
@@ -113,11 +114,15 @@ const App = () => {
             );
           })}
         </div>
-        <Cart
-          cart={cart}
-          addQuantity={handleAddQuantity}
-          reduceQuantity={handleReduceQuantity}
-        />
+        {cart.length > 0 ? (
+          <Cart
+            cart={cart}
+            addQuantity={handleAddQuantity}
+            reduceQuantity={handleReduceQuantity}
+          />
+        ) : (
+          <EmptyCart />
+        )}
       </div>
     </div>
   );
