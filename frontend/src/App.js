@@ -94,11 +94,13 @@ const App = () => {
   };
 
   const handleChange = async (e) => {
-    const robotsResponse = await Api.getRobots();
-    const filteredRobots = robotsResponse.data.filter((robot) => {
-      return robot.material === e.target.value;
-    });
-    setRobots(filteredRobots);
+    let robotsList = (await Api.getRobots()).data;
+    if (e.target.value !== "All") {
+      robotsList = robotsList.filter((robot) => {
+        return robot.material === e.target.value;
+      });
+    }
+    setRobots(robotsList);
   };
 
   useEffect(() => {

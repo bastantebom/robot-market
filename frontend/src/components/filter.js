@@ -5,6 +5,7 @@ const Filter = ({ materialType, handleChange }) => {
     <div className="filter">
       <p className="filter__label">Filter Category</p>
       <select className="filter__select" onChange={handleChange}>
+        <option value="All">All</option>
         {materialType.map((material, index) => {
           return (
             <option key={index} value={material}>
