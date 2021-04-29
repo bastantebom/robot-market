@@ -32,7 +32,9 @@ const Item = ({ robot, handleAddToCart }) => {
           <div className="info__label">Material</div>
           <div className="info__value">{robot.material}</div>
         </div>
-        <AddToCart handleClick={handleAddToCart} stock={robot.stock} />
+        <div className="add__cart">
+          <AddToCart handleClick={handleAddToCart} stock={robot.stock} />
+        </div>
       </div>
     </div>
   );

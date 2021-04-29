@@ -2,7 +2,7 @@ import React from "react";
 
 const AddToCart = ({ handleClick, stock }) => {
   return (
-    <button disabled={!stock} onClick={handleClick}>
+    <button disabled={!stock} onClick={handleClick} className="cart__button">
       Add to Cart
     </button>
   );
