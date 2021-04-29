@@ -7,6 +7,7 @@ const App = () => {
   const [robots, setRobots] = useState([]);
   const getRobots = async () => {
     const robotsResponse = await Api.getRobots();
+    console.log(robotsResponse.data);
     setRobots(robotsResponse.data);
   };
 
@@ -19,8 +20,8 @@ const App = () => {
       <h1>Robot Market</h1>
       {/*Add your code here*/}
       <div className="container">
-        {robots.map((robot) => {
-          return <Item robot={robot} />;
+        {robots.map((robot, index) => {
+          return <Item key={index} robot={robot} />;
         })}
       </div>
     </div>

@@ -1,6 +1,6 @@
 .card {
   background-color: #222831;
-  height: 37rem;
+  height: 25rem;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,22 @@
   height: 160px;
   width: 160px;
   border-radius: 50%;
-  border: 5px solid #272133;
+  border: 5px solid #fefefe;
   margin-top: 20px;
-  box-shadow: 0 10px 50px rgba(25, 209, 9, 0.699);
+}
+
+.card__info {
+  display: flex;
+  margin-top: 4px;
+}
+
+.info__label {
+  font-weight: bolder;
+  align-items: flex-start;
+}
+
+.info__value {
+  text-align: right;
+  flex: 1;
+  margin-left: 20px;
 }
