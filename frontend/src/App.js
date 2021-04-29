@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import Api from "../src/services/Api.js";
-import Item from "../src/components/item.js";
-import "../src/styles/index.css";
+import Api from "./services/Api.js";
+import Card from "./components/card.js";
+import Cart from "./components/cart.js";
+import "./styles/index.css";
 import { Context } from "./context";
 
 const App = () => {
@@ -66,12 +67,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Robot Market</h1>
-      <div>
-        <div className="container">
+      <h1>Robots Market</h1>
+      <div className={`main ${cart.length > 0 ? "has__cart" : ""}`}>
+        <div className="shop__items">
           {robots.map((robot) => {
             return (
-              <Item
+              <Card
                 key={robot.name.toLowerCase().replaceAll(" ", "-")}
                 robot={robot}
                 handleAddToCart={handleAddToCart}
@@ -79,7 +80,7 @@ const App = () => {
             );
           })}
         </div>
-        <div></div>
+        <Cart cart={cart} />
       </div>
     </div>
   );

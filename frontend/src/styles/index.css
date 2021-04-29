@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 code {
@@ -12,12 +13,23 @@ code {
     monospace;
 }
 
-.container {
+.main {
+  display: inline;
+  padding: 20px;
+  overflow-y: hidden;
+  background-color: #f5f5f5;
+}
+
+.has__cart {
+  display: flex;
+}
+
+.shop__items {
   display: grid;
   grid-template-columns: 300px 300px 300px;
-  grid-gap: 50px;
-  justify-content: center;
-  align-items: center;
+  grid-gap: 20px;
   height: 100vh;
-  background-color: #f5f5f5;
+  flex-grow: 1;
+  overflow-y: scroll;
+  flex-wrap: wrap;
 }

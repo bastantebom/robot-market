@@ -4,7 +4,7 @@ import { formatDate } from "../utils/index.js";
 import NumberFormat from "react-number-format";
 import AddToCart from "./add-to-cart.js";
 
-const Item = ({ robot, handleAddToCart }) => {
+const Card = ({ robot, handleAddToCart }) => {
   return (
     <div className="card">
       <img src={robot.image} alt="Robot" className="card__image" />
@@ -40,4 +40,4 @@ const Item = ({ robot, handleAddToCart }) => {
   );
 };
 
-export default Item;
+export default Card;
