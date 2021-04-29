@@ -55,8 +55,11 @@ const App = () => {
 
   const handleReduceQuantity = (cartItem) => {
     const cartCopy = [...cart];
-    if (cartItem.quantity > 2) {
+    if (cartItem.quantity > 1) {
       cartItem.quantity -= 1;
+      if (cartItem.quantity !== cartItem.stock) {
+        removeDisableButton(cartItem.id);
+      }
       setCart(cartCopy);
       const stringCart = JSON.stringify(cartCopy);
       localStorage.setItem("cart", stringCart);
@@ -67,6 +70,15 @@ const App = () => {
     const buttonCopy = [...disabledButton];
     const existingItem = buttonCopy.includes(id);
     if (!existingItem) buttonCopy.push(id);
+    setDisabledButton(buttonCopy);
+    const stringButton = JSON.stringify(buttonCopy);
+    localStorage.setItem("button", stringButton);
+    setRefreshButtons(true);
+  };
+
+  const removeDisableButton = (id) => {
+    let buttonCopy = [...disabledButton];
+    buttonCopy = buttonCopy.filter((e) => e !== id);
     setDisabledButton(buttonCopy);
     const stringButton = JSON.stringify(buttonCopy);
     localStorage.setItem("button", stringButton);

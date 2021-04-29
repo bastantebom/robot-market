@@ -10,6 +10,7 @@ const AddToCart = ({ handleClick, robot }) => {
     const buttonLocal = localStorage.getItem("button");
     const existingItem = buttonLocal.includes(id);
     if (existingItem) setDisabled(true);
+    else setDisabled(false);
     setRefreshButtons(false);
   };
 
