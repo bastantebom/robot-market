@@ -2,8 +2,9 @@ import React from "react";
 import "../styles/card.css";
 import { formatDate } from "../utils/index.js";
 import NumberFormat from "react-number-format";
+import AddToCart from "./add-to-cart.js";
 
-const Item = ({ robot }) => {
+const Item = ({ robot, handleAddToCart }) => {
   return (
     <div className="card">
       <img src={robot.image} alt="Robot" className="card__image" />
@@ -31,6 +32,7 @@ const Item = ({ robot }) => {
           <div className="info__label">Material</div>
           <div className="info__value">{robot.material}</div>
         </div>
+        <AddToCart handleClick={handleAddToCart} stock={robot.stock} />
       </div>
     </div>
   );

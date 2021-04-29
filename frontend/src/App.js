@@ -7,8 +7,11 @@ const App = () => {
   const [robots, setRobots] = useState([]);
   const getRobots = async () => {
     const robotsResponse = await Api.getRobots();
-    console.log(robotsResponse.data);
     setRobots(robotsResponse.data);
+  };
+
+  const handleAddToCart = () => {
+    alert("Add to Cart");
   };
 
   useEffect(() => {
@@ -21,7 +24,9 @@ const App = () => {
       {/*Add your code here*/}
       <div className="container">
         {robots.map((robot, index) => {
-          return <Item key={index} robot={robot} />;
+          return (
+            <Item key={index} robot={robot} handleAddToCart={handleAddToCart} />
+          );
         })}
       </div>
     </div>
