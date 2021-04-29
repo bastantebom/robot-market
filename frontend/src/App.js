@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Api from "../src/services/Api.js";
 import Item from "../src/components/item.js";
 import "../src/styles/index.css";
+import { Context } from "./context";
 
 const App = () => {
   const [robots, setRobots] = useState([]);
   const [cart, setCart] = useState([]);
   const [disabledButton, setDisabledButton] = useState([]);
+  const { setRefreshButtons } = useContext(Context);
 
   let cartLocal = localStorage.getItem("cart");
   let buttonLocal = localStorage.getItem("button");
@@ -44,6 +46,7 @@ const App = () => {
     setDisabledButton(buttonCopy);
     const stringButton = JSON.stringify(buttonCopy);
     localStorage.setItem("button", stringButton);
+    setRefreshButtons(true);
   };
 
   useEffect(() => {
